@@ -21,9 +21,7 @@ void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
 	{
 		CHAR(s1, cpt) = CHAR(s2, cpt);
 		if (CHAR(s2, cpt) == (unsigned char)c)
-		{
 			return ((void *)(((unsigned char *)s1) + cpt + 1));
-		}
 		cpt++;
 	}
 	return (NULL);
