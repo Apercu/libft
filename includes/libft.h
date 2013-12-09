@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 14:39:40 by bgronon           #+#    #+#             */
-/*   Updated: 2013/12/09 12:01:51 by bgronon          ###   ########.fr       */
+/*   Updated: 2013/12/09 19:45:38 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define LIBFT_H
 # include <string.h>
 
-# define CHAR(a, b) ((unsigned char *) a)[b]
+# define CHAR(a, b) 		((unsigned char *) a)[b]
+# define REMIND				((t_node *) current->content)
+# define BUFF_SIZE			10
 
 typedef struct		s_list
 {
@@ -22,6 +24,12 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_node
+{
+	char			*remind;
+	int				fd;
+}					t_node;
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
@@ -83,5 +91,6 @@ void	ft_lstadd(t_list **alst, t_list *new);
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int		ft_indexof(char *str, char c);
+int		get_next_line(int const fd, char **line);
 
 #endif /* !LIBFT_H */
