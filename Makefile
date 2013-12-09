@@ -6,7 +6,7 @@
 #    By: bgronon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/27 20:58:26 by bgronon           #+#    #+#              #
-#    Updated: 2013/12/07 19:06:41 by bgronon          ###   ########.fr        #
+#    Updated: 2013/12/09 12:01:22 by bgronon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ FILES = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar.c \
 		ft_putstr_fd.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 		ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
-		ft_lstmap.c \
+		ft_lstmap.c ft_indexof.c \
 
 all: $(NAME)
 
