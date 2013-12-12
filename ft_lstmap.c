@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/25 17:51:40 by bgronon           #+#    #+#             */
-/*   Updated: 2013/12/08 18:33:35 by bgronon          ###   ########.fr       */
+/*   Updated: 2013/12/12 19:26:12 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list	*copy;
 
+	copy = NULL;
 	if (lst)
 	{
 		copy = ft_lstnewnode(f(lst));

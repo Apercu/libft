@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 11:18:01 by bgronon           #+#    #+#             */
-/*   Updated: 2013/12/08 18:32:30 by bgronon          ###   ########.fr       */
+/*   Updated: 2013/12/12 19:23:50 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ char		**ft_strsplit(char const *s, char c)
 	int		cpt;
 	char	**tab;
 
+	tab = NULL;
 	if (!s)
 		return (tab);
 	cpt = 0;

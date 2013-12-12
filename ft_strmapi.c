@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 21:06:46 by bgronon           #+#    #+#             */
-/*   Updated: 2013/11/30 12:00:05 by bgronon          ###   ########.fr       */
+/*   Updated: 2013/12/12 19:22:43 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		i;
 	char	*str;
 
+	str = NULL;
 	if (s && f)
 	{
 		i = 0;

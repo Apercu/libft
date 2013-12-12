@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 21:44:39 by bgronon           #+#    #+#             */
-/*   Updated: 2013/12/01 12:19:48 by bgronon          ###   ########.fr       */
+/*   Updated: 2013/12/12 19:23:17 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	char	*str;
 	size_t	i;
 
+	str = NULL;
 	if (s)
 	{
 		lenght = (s != NULL) ? ft_strlen(s) : 0;
