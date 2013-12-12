@@ -1,6 +1,18 @@
-libft
+Libft
 =====
 
-    A basic Library
+A basic Library for student purposes.
 
-42
+
+Compile using
+
+    make
+
+Contact : bgronon@student.42.fr
+
+
+
+
+
+
+Xavier Niel > All
