@@ -6,15 +6,15 @@
 #    By: bgronon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/27 20:58:26 by bgronon           #+#    #+#              #
-#    Updated: 2013/12/09 19:44:41 by bgronon          ###   ########.fr        #
+#    Updated: 2013/12/13 12:20:53 by bgronon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-NAME = libft.a
+CC    = gcc
+NAME  = libft.a
 FLAGS = -Wextra -Werror -Wall
-HEAD = includes
-OBJS = $(FILES:.c=.o);
+HEAD  = includes
+OBJS  = $(FILES:.c=.o);
 FILES = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_memchr.c ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c \
 		ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c \

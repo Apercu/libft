@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 12:25:46 by bgronon           #+#    #+#             */
-/*   Updated: 2013/11/23 15:03:51 by bgronon          ###   ########.fr       */
+/*   Updated: 2013/12/13 17:48:42 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	ft_getlen(int nb)
 	return (cpt);
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	char	*str;
 	int		len;
