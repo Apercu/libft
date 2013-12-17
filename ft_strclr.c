@@ -6,13 +6,13 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 20:21:52 by bgronon           #+#    #+#             */
-/*   Updated: 2013/11/30 11:57:23 by bgronon          ###   ########.fr       */
+/*   Updated: 2013/12/17 12:17:49 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	ft_strclr(char *s)
+void	ft_strclr(char *s)
 {
 	int		i;
 
