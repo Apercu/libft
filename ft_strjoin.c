@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 23:05:01 by bgronon           #+#    #+#             */
-/*   Updated: 2013/11/23 18:54:25 by bgronon          ###   ########.fr       */
+/*   Updated: 2013/12/19 15:47:11 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_fillstr(char const *s1, char const *s2, char **str)
 	(*str)[i + j] = '\0';
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
 
@@ -48,9 +48,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	str = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str)
-	{
 		return (NULL);
-	}
 	ft_fillstr(s1, s2, &str);
 	return (str);
 }
