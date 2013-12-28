@@ -6,13 +6,13 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 10:28:21 by bgronon           #+#    #+#             */
-/*   Updated: 2013/11/27 19:13:04 by bgronon          ###   ########.fr       */
+/*   Updated: 2013/12/28 10:43:51 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static const char	*ft_removeshit(const char *str)
+static const char	*ft_remove(const char *str)
 {
 	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\v'
 			|| *str == '\f' || *str == '\r')
