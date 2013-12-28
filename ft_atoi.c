@@ -36,7 +36,7 @@ int					ft_atoi(const char *str)
 	ft_assign(&i, &res, &sign);
 	if (str == NULL)
 		return (0);
-	str = ft_removeshit(str);
+	str = ft_remove(str);
 	if (str[i] == '-' || str[i] == '+')
 	{
 		sign = (str[i] == '-') ? -1 : 1;
