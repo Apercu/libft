@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 10:28:21 by bgronon           #+#    #+#             */
-/*   Updated: 2013/12/28 10:43:51 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/01/05 14:29:40 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int					ft_atoi(const char *str)
 	ft_assign(&i, &res, &sign);
 	if (str == NULL)
 		return (0);
-	str = ft_removeshit(str);
+	str = ft_remove(str);
 	if (str[i] == '-' || str[i] == '+')
 	{
 		sign = (str[i] == '-') ? -1 : 1;

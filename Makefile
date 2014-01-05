@@ -6,44 +6,117 @@
 #    By: bgronon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/27 20:58:26 by bgronon           #+#    #+#              #
-#    Updated: 2013/12/13 12:20:53 by bgronon          ###   ########.fr        #
+#    Updated: 2014/01/05 14:29:07 by bgronon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC    = gcc
-NAME  = libft.a
-FLAGS = -Wextra -Werror -Wall
-HEAD  = includes
-OBJS  = $(FILES:.c=.o);
-FILES = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
-		ft_memchr.c ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c \
-		ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c \
-		ft_strchr.c ft_strrchr.c ft_strstr.c ft_strnstr.c ft_strcmp.c \
-		ft_strncmp.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
-		ft_isprint.c ft_toupper.c ft_tolower.c ft_atoi.c ft_memalloc.c \
-		ft_memdel.c ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.c \
-		ft_striteri.c ft_strmap.c ft_strmapi.c ft_strequ.c ft_strnequ.c \
-		ft_strsub.c ft_strjoin.c ft_strtrim.c ft_strsplit.c ft_itoa.c \
-		ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar.c \
-		ft_putstr_fd.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-		ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
-		ft_lstmap.c ft_indexof.c get_next_line.c \
+CC       = clang
+NAME     = libft.a
+CFLAGS   = -Wextra -Wall -Werror -pedantic
+INC      = -I ./inc/
+DEBUG    = -g3 -fno-inline -DD_ERRORS_ON
 
-all: $(NAME)
+LISTDIR  = srcs
+SRCDIR   = srcs
+OBJDIR   = .obj
+INCDIR   = inc
 
-$(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+FILES    = $(SRCDIR)/ft_memset.c \
+           $(SRCDIR)/ft_bzero.c \
+           $(SRCDIR)/ft_memcpy.c \
+           $(SRCDIR)/ft_memccpy.c \
+           $(SRCDIR)/ft_memmove.c \
+           $(SRCDIR)/ft_memchr.c \
+           $(SRCDIR)/ft_memcmp.c \
+           $(SRCDIR)/ft_strlen.c \
+           $(SRCDIR)/ft_strdup.c \
+           $(SRCDIR)/ft_strcpy.c \
+           $(SRCDIR)/ft_strncpy.c \
+           $(SRCDIR)/ft_strcat.c \
+           $(SRCDIR)/ft_strncat.c \
+           $(SRCDIR)/ft_strlcat.c \
+           $(SRCDIR)/ft_strchr.c \
+           $(SRCDIR)/ft_strrchr.c \
+           $(SRCDIR)/ft_strstr.c \
+           $(SRCDIR)/ft_strnstr.c \
+           $(SRCDIR)/ft_strcmp.c \
+           $(SRCDIR)/ft_strncmp.c \
+           $(SRCDIR)/ft_isalpha.c \
+           $(SRCDIR)/ft_isdigit.c \
+           $(SRCDIR)/ft_isalnum.c \
+           $(SRCDIR)/ft_isascii.c \
+           $(SRCDIR)/ft_isprint.c \
+           $(SRCDIR)/ft_toupper.c \
+           $(SRCDIR)/ft_tolower.c \
+           $(SRCDIR)/ft_atoi.c \
+           $(SRCDIR)/ft_memalloc.c \
+           $(SRCDIR)/ft_memdel.c \
+           $(SRCDIR)/ft_strnew.c \
+           $(SRCDIR)/ft_strdel.c \
+           $(SRCDIR)/ft_strclr.c \
+           $(SRCDIR)/ft_striter.c \
+           $(SRCDIR)/ft_striteri.c \
+           $(SRCDIR)/ft_strmap.c \
+           $(SRCDIR)/ft_strmapi.c \
+           $(SRCDIR)/ft_strequ.c \
+           $(SRCDIR)/ft_strnequ.c \
+           $(SRCDIR)/ft_strsub.c \
+           $(SRCDIR)/ft_strjoin.c \
+           $(SRCDIR)/ft_strtrim.c \
+           $(SRCDIR)/ft_strsplit.c \
+           $(SRCDIR)/ft_itoa.c \
+           $(SRCDIR)/ft_putchar.c \
+           $(SRCDIR)/ft_putstr.c \
+           $(SRCDIR)/ft_putendl.c \
+           $(SRCDIR)/ft_putnbr.c \
+           $(SRCDIR)/ft_putchar.c \
+           $(SRCDIR)/ft_putstr_fd.c \
+           $(SRCDIR)/ft_putchar_fd.c \
+           $(SRCDIR)/ft_putendl_fd.c \
+           $(SRCDIR)/ft_putnbr_fd.c \
+           $(SRCDIR)/ft_lstnew.c \
+           $(SRCDIR)/ft_lstdelone.c \
+           $(SRCDIR)/ft_lstdel.c \
+           $(SRCDIR)/ft_lstadd.c \
+           $(SRCDIR)/ft_lstiter.c \
+           $(SRCDIR)/ft_lstmap.c \
+           $(SRCDIR)/ft_indexof.c \
+           $(SRCDIR)/get_next_line.c \
+
+OBJ     = $(addprefix $(OBJDIR)/, $(FILES:.c=.o))
+
+.SILENT:
+
+$(addprefix $(OBJDIR)/, %.o) : %.c $(INCDIR)
+	$(CC) $(CFLAGS) -o $@ -c $< $(INC)
+	printf '\033[0;32m--> %s\n\033[0m' "Building C Object [$@]"
+
+$(NAME) : $(OBJDIR) $(OBJ)
+	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
+	printf '\033[1;31m--> %s \033[1;35m%s \033[1;33m\n\033[0m' "Libft ready, master."
 
-%.o : %.c
-	$(CC) $(FLAGS) -c $^ -I $(HEAD)
+clean :
+	/bin/rm	-fr $(OBJDIR)
+	printf '\033[1;34m%s\n\033[0m' "--> Clean project $(NAME)"
 
-clean:
-	rm -rf $(OBJS)
+fclean : clean
+	/bin/rm -fr $(NAME)
+	printf '\033[1;34m%s\n\033[0m' "--> Fclean project $(NAME)"
 
-fclean: clean
-	rm -rf $(NAME)
+re : fclean all
 
-re: fclean all
+debug : CFLAGS += $(DEBUG)
+debug : re
+	printf '\033[1;31m%s \033[1;35m%s\n\033[0m' "Debug version" "$(DEBUG)"
 
-.PHONY: all, clean, fclean, re
+all : $(NAME)
+
+$(OBJDIR) :
+	/bin/mkdir $(OBJDIR); \
+	for DIR in $(LISTDIR); \
+	do \
+	/bin/mkdir $(OBJDIR)/$$DIR; \
+	done
+
+.PHONY:	clean fclean re debug
