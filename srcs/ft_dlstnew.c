@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/05 14:32:42 by bgronon           #+#    #+#             */
-/*   Updated: 2014/01/05 14:54:44 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/01/05 18:22:42 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ t_dlst	*ft_dlstnew(const void *content, size_t content_size)
 			ft_memcpy(out->content, content, content_size);
 	}
 	else
-		out->content = NULL:
+		out->content = NULL;
 	return (out);
 }

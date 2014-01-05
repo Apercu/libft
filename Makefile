@@ -6,7 +6,7 @@
 #    By: bgronon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/27 20:58:26 by bgronon           #+#    #+#              #
-#    Updated: 2014/01/05 14:29:07 by bgronon          ###   ########.fr        #
+#    Updated: 2014/01/05 18:22:02 by bgronon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,6 +82,9 @@ FILES    = $(SRCDIR)/ft_memset.c \
            $(SRCDIR)/ft_lstmap.c \
            $(SRCDIR)/ft_indexof.c \
            $(SRCDIR)/get_next_line.c \
+           $(SRCDIR)/ft_dlstnew.c \
+           $(SRCDIR)/ft_dlstdel.c \
+           $(SRCDIR)/ft_dlstpush.c \
 
 OBJ     = $(addprefix $(OBJDIR)/, $(FILES:.c=.o))
 
