@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/05 17:16:29 by bgronon           #+#    #+#             */
-/*   Updated: 2014/01/05 17:16:30 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/01/05 18:35:19 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_dlstpush(t_dlst **root, t_dlst *branch)
 	t_dlst	*out;
 
 	out = *root;
-	if (out)
+	if (out && out->content)
 	{
 		while (out->next)
 			out = out->next;
