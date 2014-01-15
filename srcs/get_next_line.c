@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/09 19:43:08 by bgronon           #+#    #+#             */
-/*   Updated: 2014/01/15 18:06:41 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/01/15 18:20:22 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,31 @@ static	int			ft_findendl(int fd, t_read *red)
 		}
 	}
 	return (size);
+}
+
+int					get_next_line(int fd, char **line)
+{
+	static t_read	*start = NULL;
+	t_read			*red;
+	t_read			*prevtmp;
+	t_read			*tab[2];
+
+	if (fd < 0)
+		return (-1);
+	prevtmp = NULL;
+	if (!start)
+		start = ft_newread(fd);
+	red = start;
+	while (red->fd != fd)
+	{
+		if (!(red->next))
+			red->next = ft_newread(fd);
+		prevtmp = red;
+		red = red->next;
+	}
+	if (!red || !start)
+		return (-1);
+	tab[0] = red;
+	tab[1] = prevtmp;
+	return (ft_print(ft_findendl(fd, red), tab, &start, line));
 }
