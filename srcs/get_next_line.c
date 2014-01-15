@@ -6,97 +6,105 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/09 19:43:08 by bgronon           #+#    #+#             */
-/*   Updated: 2013/12/09 19:45:54 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/01/15 18:06:41 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/uio.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "libft.h"
 
-static t_list	*ft_getnode(int fd, t_list **save)
+static	t_read		*ft_freeread(t_read *red, t_read *prev, t_read **start)
 {
-	t_list	*new;
-	t_node	*test;
-
-	while (*save)
-	{
-		if (((t_node *) (*save)->content)->fd == fd)
-			return (*save);
-		*save = (*save)->next;
-	}
-	test = (t_node *) malloc(sizeof(t_node));
-	if (!test)
-		return (NULL);
-	test->remind = NULL;
-	test->fd = fd;
-	new = ft_lstnew(test, sizeof(t_node));
-	ft_lstadd(save, new);
-	free(test);
-	return (ft_getnode(fd, save));
+	if (!prev)
+		*start = red->next;
+	else
+		prev->next = red->next;
+	free(red->read);
+	free(red);
+	if (!prev)
+		return (*start);
+	else
+		return (prev->next);
 }
 
-static int		ft_testremind(t_list *current, char **line)
+static	t_read		*ft_newread(int fd)
 {
-	int		index;
+	t_read			*red;
+	void			*tmp;
+	int				ret;
 
-	if (REMIND->remind)
+	if (!(red = (t_read *)malloc(sizeof(t_read))))
+		return (NULL);
+	if (!(tmp = malloc(sizeof(char) * BUFF_SIZE)))
 	{
-		index = ft_indexof(REMIND->remind, '\n');
-		if (index != -1)
+		free(red);
+		return (NULL);
+	}
+	if ((ret = read(fd, tmp, BUFF_SIZE)) < 0)
+	{
+		free(red);
+		free(tmp);
+		return (NULL);
+	}
+	red->read = (char *)tmp;
+	red->fd = fd;
+	red->size = ret;
+	red->next = NULL;
+	red->index = 0;
+	return (red);
+}
+
+static	int			ft_print(int n, t_read **tab, t_read **s, char** l)
+{
+	char			*tmpstr;
+	int				index;
+
+	if (!tab[0])
+		return (-1);
+	index = (tab[0])->index;
+	if (n == -1 || !(tmpstr = (char *)malloc(sizeof (char) * (n + 1))))
+		return (-1);
+	*l = tmpstr;
+	while (n--)
+	{
+		*tmpstr++ = (tab[0])->read[index++];
+		if (index == (tab[0])->size)
 		{
-			*line = ft_strsub(REMIND->remind, 0, index);
-			REMIND->remind += index + 1;
-			return (1);
+			tab[0] = ft_freeread(tab[0], tab[1], s);
+			index = 0;
 		}
 	}
-	return (0);
+	*tmpstr = 0;
+	if (!tab[0] || (index == tab[0]->size && tab[0]->size < BUFF_SIZE))
+		return (0);
+	tab[0]->index = index + 1;
+	if (tab[0]->index == tab[0]->size)
+		tab[0] = ft_freeread(tab[0], tab[1], s);
+	return (1);
 }
 
-static int		ft_createrem(t_list *current, char **line, char *buff, int ret)
+static	int			ft_findendl(int fd, t_read *red)
 {
-	int		index;
+	int				index;
+	int				size;
+	t_read			*tmplst;
 
-	buff[ret] = '\0';
-	REMIND->remind = (REMIND->remind) ? REMIND->remind : ft_strdup("");
-	REMIND->remind = ft_strjoin(REMIND->remind, buff);
-	index = ft_indexof(REMIND->remind, '\n');
-	if (index != -1)
+	size = 0;
+	index = red->index;
+	while (red->read[index] != '\n' && index < red->size)
 	{
-		*line = ft_strsub(REMIND->remind, 0, index);
-		REMIND->remind += index + 1;
-		return (1);
+		index++;
+		size++;
+		if (index == red->size && red->size == BUFF_SIZE)
+		{
+			if (!(tmplst = ft_newread(fd)))
+				return (-1);
+			tmplst->next = red->next;
+			red->next = tmplst;
+			red = tmplst;
+			index = 0;
+		}
 	}
-	return (0);
-}
-
-int				get_next_line(int const fd, char **line)
-{
-	static t_list	*save;
-	t_list			*current;
-	int				ret;
-	char			buff[BUFF_SIZE + 1];
-
-	current = ft_getnode(fd, &save);
-	if (fd < 0 || BUFF_SIZE < 1 || !current)
-		return (-1);
-	if (ft_testremind(current, line))
-		return (1);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
-	{
-		if (ret == -1)
-			return (-1);
-		if (ft_createrem(current, line, buff, ret))
-			return (1);
-	}
-	if (REMIND->remind)
-	{
-		*line = ft_strdup(REMIND->remind);
-		free(current);
-		REMIND->remind = NULL;
-		return (1);
-	}
-	return (0);
+	return (size);
 }

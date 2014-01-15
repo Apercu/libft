@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 14:39:40 by bgronon           #+#    #+#             */
-/*   Updated: 2014/01/05 17:17:35 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/01/15 18:07:46 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,16 @@
 # include <string.h>
 
 # define CHAR(a, b) 		((unsigned char *) a)[b]
-# define REMIND				((t_node *) current->content)
-# define BUFF_SIZE			10
+# define BUFF_SIZE			4096
+
+typedef struct		s_read
+{
+	int				size;
+	int				index;
+	int				fd;
+	char			*read;
+	struct s_read	*next;
+}					t_read;
 
 typedef struct		s_dlst
 {
@@ -31,12 +39,6 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
-
-typedef struct		s_node
-{
-	char			*remind;
-	int				fd;
-}					t_node;
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
