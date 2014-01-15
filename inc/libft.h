@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 14:39:40 by bgronon           #+#    #+#             */
-/*   Updated: 2014/01/15 18:07:46 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/01/15 22:03:57 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int		ft_indexof(char *str, char c);
 int		get_next_line(int const fd, char **line);
+int		ft_charin(char *str, char c);
 
 t_dlst	*ft_dlstnew(const void *content, size_t content_size);
 void	ft_dlstpush(t_dlst **root, t_dlst *branch);
