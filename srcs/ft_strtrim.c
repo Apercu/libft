@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 23:25:24 by bgronon           #+#    #+#             */
-/*   Updated: 2013/11/23 19:36:34 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/01/23 11:36:58 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_getend(char const *s)
 	return (len);
 }
 
-char	*ft_strtrim(char const *s)
+char		*ft_strtrim(char const *s)
 {
 	char	*str;
 	int		start;
