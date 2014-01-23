@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 14:39:40 by bgronon           #+#    #+#             */
-/*   Updated: 2014/01/23 11:36:46 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/01/23 11:48:51 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,8 @@
 # include <string.h>
 
 # define CHAR(a, b) 		((unsigned char *) a)[b]
-# define BUFF_SIZE			4096
-
-typedef struct		s_read
-{
-	int				size;
-	int				index;
-	int				fd;
-	char			*read;
-	struct s_read	*next;
-}					t_read;
+# define CONTENT			((t_file *) cur->content)
+# define BUF_SIZE			4096
 
 typedef struct		s_dlst
 {
@@ -39,6 +31,13 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_file
+{
+	char			*rem;
+	int				fd;
+	int				read;
+}					t_file;
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
@@ -97,6 +96,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size);
 void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstadd(t_list **alst, t_list *new);
+void	ft_lstpush(t_list **root, t_list *branch);
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int		ft_indexof(char *str, char c);

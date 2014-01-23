@@ -6,7 +6,7 @@
 #    By: bgronon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/27 20:58:26 by bgronon           #+#    #+#              #
-#    Updated: 2014/01/15 22:07:25 by bgronon          ###   ########.fr        #
+#    Updated: 2014/01/23 11:48:30 by bgronon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ FILES    = $(SRCDIR)/ft_memset.c \
            $(SRCDIR)/ft_lstdelone.c \
            $(SRCDIR)/ft_lstdel.c \
            $(SRCDIR)/ft_lstadd.c \
+           $(SRCDIR)/ft_lstpush.c \
            $(SRCDIR)/ft_lstiter.c \
            $(SRCDIR)/ft_lstmap.c \
            $(SRCDIR)/ft_indexof.c \
