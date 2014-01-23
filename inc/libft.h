@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 14:39:40 by bgronon           #+#    #+#             */
-/*   Updated: 2014/01/23 11:48:51 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/01/23 19:13:27 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@
 # define CHAR(a, b) 		((unsigned char *) a)[b]
 # define CONTENT			((t_file *) cur->content)
 # define BUF_SIZE			4096
+
+typedef struct		s_btree
+{
+	struct s_btree	*dad;
+	struct s_btree	*left;
+	struct s_btree	*right;
+	void			*content;
+}					t_btree;
 
 typedef struct		s_dlst
 {
@@ -106,5 +114,8 @@ int		ft_charin(char *str, char c);
 t_dlst	*ft_dlstnew(const void *content, size_t content_size);
 void	ft_dlstpush(t_dlst **root, t_dlst *branch);
 void	ft_dlstdel(t_dlst **lst);
+t_btree	*ft_btreenew(void const *content, size_t content_size);
+void	ft_btreepush(t_btree **root, t_btree *br, int (*fn)(void *, void *));
+
 
 #endif /* !LIBFT_H */

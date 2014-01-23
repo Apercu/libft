@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 18:12:00 by bgronon           #+#    #+#             */
-/*   Updated: 2014/01/23 18:16:09 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/01/23 19:13:48 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ t_btree		*ft_btreenew(void const *content, size_t content_size)
 	}
 	else
 		out->content = NULL;
-	return (lst);
+	return (out);
 }
