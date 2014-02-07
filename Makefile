@@ -6,7 +6,7 @@
 #    By: bgronon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/27 20:58:26 by bgronon           #+#    #+#              #
-#    Updated: 2014/01/23 19:12:33 by bgronon          ###   ########.fr        #
+#    Updated: 2014/02/07 19:39:49 by bgronon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,26 +96,26 @@ OBJ     = $(addprefix $(OBJDIR)/, $(FILES:.c=.o))
 
 $(addprefix $(OBJDIR)/, %.o) : %.c $(INCDIR)
 	$(CC) $(CFLAGS) -o $@ -c $< $(INC)
-	printf '\033[0;32m--> %s\n\033[0m' "Building C Object [$@]"
+	printf '\033[0;34mObject $@ [\033[0;32m✔\033[0;34m]\n'
 
 $(NAME) : $(OBJDIR) $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
-	printf '\033[1;31m--> %s \033[1;35m%s \033[1;33m\n\033[0m' "Libft ready, master."
+	printf '\033[1;31m%s \033[0;34m[\033[0;32m✔\033[0;34m]\n' "Libft "
 
 clean :
 	/bin/rm	-fr $(OBJDIR)
-	printf '\033[1;34m%s\n\033[0m' "--> Clean project $(NAME)"
+	printf '\033[1;34m%s\n\033[0m' "Clean Libft"
 
 fclean : clean
 	/bin/rm -fr $(NAME)
-	printf '\033[1;34m%s\n\033[0m' "--> Fclean project $(NAME)"
+	printf '\033[1;34m%s\n\033[0m' "Fclean Libft"
 
 re : fclean all
 
 debug : CFLAGS += $(DEBUG)
 debug : re
-	printf '\033[1;31m%s \033[1;35m%s\n\033[0m' "Debug version" "$(DEBUG)"
+	printf '\033[1;31m%s \033[1;35m%s\n\033[0m' "Debug " "$(DEBUG)"
 
 all : $(NAME)
 
