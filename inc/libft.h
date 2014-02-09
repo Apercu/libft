@@ -117,5 +117,4 @@ void	ft_dlstdel(t_dlst **lst);
 t_btree	*ft_btreenew(void const *content, size_t content_size);
 void	ft_btreepush(t_btree **root, t_btree *br, int (*fn)(void *, void *));
 
-
 #endif /* !LIBFT_H */
