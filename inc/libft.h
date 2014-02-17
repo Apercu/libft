@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 14:39:40 by bgronon           #+#    #+#             */
-/*   Updated: 2014/01/23 19:13:27 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/02/17 12:23:28 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # define CHAR(a, b) 		((unsigned char *) a)[b]
 # define CONTENT			((t_file *) cur->content)
-# define BUF_SIZE			4096
+# define BUFF_SIZE			4096
 
 typedef struct		s_btree
 {
@@ -40,12 +40,14 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct		s_file
+typedef struct		s_read
 {
-	char			*rem;
+	int				size;
+	int				index;
 	int				fd;
-	int				read;
-}					t_file;
+	char			*read;
+	struct s_read	*next;
+}					t_read;
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);

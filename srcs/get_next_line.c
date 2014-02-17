@@ -3,89 +3,135 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/02 10:07:45 by mpillet           #+#    #+#             */
-/*   Updated: 2013/12/27 12:30:28 by mpillet          ###   ########.fr       */
+/*   Created: 2014/02/17 12:22:07 by bgronon           #+#    #+#             */
+/*   Updated: 2014/02/17 12:23:47 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/uio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include "libft.h"
 
-static t_list	*ft_getnode(t_list **lst, int fd)
+static t_read		*ft_freeread(t_read *red, t_read *prev, t_read **start)
 {
-	t_list	*tmp;
-	t_file	*new;
-
-	tmp = *lst;
-	while (tmp)
-	{
-		if (((t_file *) tmp->content)->fd == fd)
-			return (tmp);
-		tmp = tmp->next;
-	}
-	new = (t_file *) malloc(sizeof(t_file));
-	if (!new)
-		return (NULL);
-	new->rem = NULL;
-	new->fd = fd;
-	new->read = 0;
-	ft_lstpush(lst, ft_lstnew(new, sizeof(t_file)));
-	free(new);
-	return (ft_getnode(lst, fd));
+	if (!prev)
+		*start = red->next;
+	else
+		prev->next = red->next;
+	free(red->read);
+	free(red);
+	if (!prev)
+		return (*start);
+	else
+		return (prev->next);
 }
 
-static int		ft_treatrem(t_list *cur, char **line)
+static t_read		*ft_newread(int fd)
 {
-	int		index;
+	t_read			*red;
+	void			*tmp;
+	int				ret;
 
-	index = ft_indexof(CONTENT->rem, '\n');
-	*line = ft_strsub(CONTENT->rem, 0, index);
-	CONTENT->rem += index + 1;
+	if (!(red = (t_read *)malloc(sizeof(t_read))))
+		return (NULL);
+	if (!(tmp = malloc(sizeof(char) * BUFF_SIZE)))
+	{
+		free(red);
+		return (NULL);
+	}
+	if ((ret = read(fd, tmp, BUFF_SIZE)) < 0)
+	{
+		free(red);
+		free(tmp);
+		return (NULL);
+	}
+	red->read = (char *)tmp;
+	red->fd = fd;
+	red->size = ret;
+	red->next = NULL;
+	red->index = 0;
+	return (red);
+}
+
+static int			ft_print(int n, t_read **tab, t_read **s, char** l)
+{
+	char			*tmpstr;
+	int				index;
+
+	if (!tab[0])
+		return (-1);
+	index = (tab[0])->index;
+	if (n == -1 || !(tmpstr = (char *) malloc(sizeof(char) * (n + 1))))
+		return (-1);
+	*l = tmpstr;
+	while (n--)
+	{
+		*tmpstr++ = (tab[0])->read[index++];
+		if (index == (tab[0])->size)
+		{
+			tab[0] = ft_freeread(tab[0], tab[1], s);
+			index = 0;
+		}
+	}
+	*tmpstr = 0;
+	if (!tab[0] || (index == tab[0]->size && tab[0]->size < BUFF_SIZE))
+		return (0);
+	tab[0]->index = index + 1;
+	if (tab[0]->index == tab[0]->size)
+		tab[0] = ft_freeread(tab[0], tab[1], s);
 	return (1);
 }
 
-static int		ft_finalize(t_list *cur, char **line)
+static int			ft_findendl(int fd, t_read *red)
 {
-	if (CONTENT->rem && ft_strchr(CONTENT->rem, '\n'))
-		return (ft_treatrem(cur, line));
-	if (CONTENT->rem)
+	int				index;
+	int				size;
+	t_read			*tmplst;
+
+	size = 0;
+	index = red->index;
+	while (red->read[index] != '\n' && index < red->size)
 	{
-		*line = ft_strdup(CONTENT->rem);
-		CONTENT->rem = NULL;
-		return (1);
+		index++;
+		size++;
+		if (index == red->size && red->size == BUFF_SIZE)
+		{
+			if (!(tmplst = ft_newread(fd)))
+				return (-1);
+			tmplst->next = red->next;
+			red->next = tmplst;
+			red = tmplst;
+			index = 0;
+		}
 	}
-	return (0);
+	return (size);
 }
 
-int				get_next_line(int const fd, char **line)
+int					get_next_line(int fd, char **line)
 {
-	static t_list	*lst;
-	t_list			*cur;
-	char			buf[BUF_SIZE + 1];
-	int				ret;
+	static t_read	*start = NULL;
+	t_read			*red;
+	t_read			*prevtmp;
+	t_read			*tab[2];
 
-	if (BUF_SIZE < 1 || fd < 0)
+	if (fd < 0)
 		return (-1);
-	cur = ft_getnode(&lst, fd);
-	if (!cur)
-		return (-1);
-	if (CONTENT->rem && ft_strchr(CONTENT->rem, '\n'))
-		return (ft_treatrem(cur, line));
-	while ((ret = read(fd, buf, BUF_SIZE)))
+	prevtmp = NULL;
+	if (!start)
+		start = ft_newread(fd);
+	red = start;
+	while (red->fd != fd)
 	{
-		if (ret == -1)
-			return (-1);
-		buf[ret] = '\0';
-		CONTENT->read = 1;
-		CONTENT->rem = CONTENT->rem ? CONTENT->rem : ft_strdup("");
-		CONTENT->rem = ft_strjoin(CONTENT->rem, buf);
-		if (ft_strchr(CONTENT->rem, '\n'))
-			return (ft_treatrem(cur, line));
+		if (!(red->next))
+			red->next = ft_newread(fd);
+		prevtmp = red;
+		red = red->next;
 	}
-	return (ft_finalize(cur, line));
+	if (!red || !start)
+		return (-1);
+	tab[0] = red;
+	tab[1] = prevtmp;
+	return (ft_print(ft_findendl(fd, red), tab, &start, line));
 }
