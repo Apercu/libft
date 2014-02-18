@@ -16,7 +16,7 @@
 
 # define CHAR(a, b) 		((unsigned char *) a)[b]
 # define CONTENT			((t_file *) cur->content)
-# define BUF_SIZE			4096
+# define BUFF_SIZE			4096
 
 typedef struct		s_btree
 {
@@ -40,12 +40,14 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct		s_file
+typedef struct		s_read
 {
-	char			*rem;
+	int				size;
+	int				index;
 	int				fd;
-	int				read;
-}					t_file;
+	char			*read;
+	struct s_read	*next;
+}					t_read;
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
