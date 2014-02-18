@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 14:39:40 by bgronon           #+#    #+#             */
-/*   Updated: 2014/02/17 12:23:28 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/02/18 19:26:10 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,10 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int		ft_indexof(char *str, char c);
 int		get_next_line(int const fd, char **line);
 int		ft_charin(char *str, char c);
-
 t_dlst	*ft_dlstnew(const void *content, size_t content_size);
 void	ft_dlstpush(t_dlst **root, t_dlst *branch);
 void	ft_dlstdel(t_dlst **lst);
 t_btree	*ft_btreenew(void const *content, size_t content_size);
 void	ft_btreepush(t_btree **root, t_btree *br, int (*fn)(void *, void *));
-
 
 #endif /* !LIBFT_H */
