@@ -6,7 +6,7 @@
 #    By: bgronon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/27 20:58:26 by bgronon           #+#    #+#              #
-#    Updated: 2014/02/07 19:39:49 by bgronon          ###   ########.fr        #
+#    Updated: 2014/02/27 18:35:49 by bgronon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ FILES    = $(SRCDIR)/ft_memset.c \
            $(SRCDIR)/ft_strequ.c \
            $(SRCDIR)/ft_strnequ.c \
            $(SRCDIR)/ft_strsub.c \
+           $(SRCDIR)/ft_streplace.c \
            $(SRCDIR)/ft_strjoin.c \
            $(SRCDIR)/ft_strtrim.c \
            $(SRCDIR)/ft_strsplit.c \
