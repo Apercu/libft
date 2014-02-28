@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 14:39:40 by bgronon           #+#    #+#             */
-/*   Updated: 2014/02/27 18:36:14 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/02/28 19:14:18 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,6 @@ void	ft_dlstpush(t_dlst **root, t_dlst *branch);
 void	ft_dlstdel(t_dlst **lst);
 t_btree	*ft_btreenew(void const *content, size_t content_size);
 void	ft_btreepush(t_btree **root, t_btree *br, int (*fn)(void *, void *));
+char	*ft_multijoin(int count, ...);
 
 #endif /* !LIBFT_H */

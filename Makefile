@@ -6,7 +6,7 @@
 #    By: bgronon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/27 20:58:26 by bgronon           #+#    #+#              #
-#    Updated: 2014/02/27 18:35:49 by bgronon          ###   ########.fr        #
+#    Updated: 2014/02/28 19:14:02 by bgronon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,7 @@ FILES    = $(SRCDIR)/ft_memset.c \
            $(SRCDIR)/ft_dlstpush.c \
            $(SRCDIR)/ft_btreenew.c \
            $(SRCDIR)/ft_btreepush.c \
+           $(SRCDIR)/ft_multijoin.c \
 
 OBJ     = $(addprefix $(OBJDIR)/, $(FILES:.c=.o))
 
