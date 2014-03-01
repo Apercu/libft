@@ -6,7 +6,7 @@
 #    By: bgronon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/27 20:58:26 by bgronon           #+#    #+#              #
-#    Updated: 2014/02/28 19:14:02 by bgronon          ###   ########.fr        #
+#    Updated: 2014/03/01 17:24:28 by bgronon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,22 @@ SRCDIR   = srcs
 OBJDIR   = .obj
 INCDIR   = inc
 
-FILES    = $(SRCDIR)/ft_memset.c \
+FILES    = $(SRCDIR)/ft_isalpha.c \
+           $(SRCDIR)/ft_isdigit.c \
+           $(SRCDIR)/ft_isalnum.c \
+           $(SRCDIR)/ft_isascii.c \
+           $(SRCDIR)/ft_isprint.c \
+           $(SRCDIR)/ft_toupper.c \
+           $(SRCDIR)/ft_tolower.c \
+		   $(SRCDIR)/ft_memset.c \
            $(SRCDIR)/ft_bzero.c \
            $(SRCDIR)/ft_memcpy.c \
            $(SRCDIR)/ft_memccpy.c \
            $(SRCDIR)/ft_memmove.c \
            $(SRCDIR)/ft_memchr.c \
            $(SRCDIR)/ft_memcmp.c \
+           $(SRCDIR)/ft_memalloc.c \
+           $(SRCDIR)/ft_memdel.c \
            $(SRCDIR)/ft_strlen.c \
            $(SRCDIR)/ft_strdup.c \
            $(SRCDIR)/ft_strcpy.c \
@@ -41,16 +50,7 @@ FILES    = $(SRCDIR)/ft_memset.c \
            $(SRCDIR)/ft_strnstr.c \
            $(SRCDIR)/ft_strcmp.c \
            $(SRCDIR)/ft_strncmp.c \
-           $(SRCDIR)/ft_isalpha.c \
-           $(SRCDIR)/ft_isdigit.c \
-           $(SRCDIR)/ft_isalnum.c \
-           $(SRCDIR)/ft_isascii.c \
-           $(SRCDIR)/ft_isprint.c \
-           $(SRCDIR)/ft_toupper.c \
-           $(SRCDIR)/ft_tolower.c \
            $(SRCDIR)/ft_atoi.c \
-           $(SRCDIR)/ft_memalloc.c \
-           $(SRCDIR)/ft_memdel.c \
            $(SRCDIR)/ft_strnew.c \
            $(SRCDIR)/ft_strdel.c \
            $(SRCDIR)/ft_strclr.c \
@@ -62,10 +62,15 @@ FILES    = $(SRCDIR)/ft_memset.c \
            $(SRCDIR)/ft_strnequ.c \
            $(SRCDIR)/ft_strsub.c \
            $(SRCDIR)/ft_streplace.c \
-           $(SRCDIR)/ft_strjoin.c \
            $(SRCDIR)/ft_strtrim.c \
            $(SRCDIR)/ft_strsplit.c \
            $(SRCDIR)/ft_itoa.c \
+           $(SRCDIR)/ft_charin.c \
+           $(SRCDIR)/ft_indexof.c \
+           $(SRCDIR)/ft_struntil.c \
+           $(SRCDIR)/ft_strjoin.c \
+           $(SRCDIR)/ft_multijoin.c \
+           $(SRCDIR)/get_next_line.c \
            $(SRCDIR)/ft_putchar.c \
            $(SRCDIR)/ft_putstr.c \
            $(SRCDIR)/ft_putendl.c \
@@ -82,15 +87,11 @@ FILES    = $(SRCDIR)/ft_memset.c \
            $(SRCDIR)/ft_lstpush.c \
            $(SRCDIR)/ft_lstiter.c \
            $(SRCDIR)/ft_lstmap.c \
-           $(SRCDIR)/ft_indexof.c \
-           $(SRCDIR)/get_next_line.c \
-           $(SRCDIR)/ft_charin.c \
            $(SRCDIR)/ft_dlstnew.c \
            $(SRCDIR)/ft_dlstdel.c \
            $(SRCDIR)/ft_dlstpush.c \
            $(SRCDIR)/ft_btreenew.c \
            $(SRCDIR)/ft_btreepush.c \
-           $(SRCDIR)/ft_multijoin.c \
 
 OBJ     = $(addprefix $(OBJDIR)/, $(FILES:.c=.o))
 
