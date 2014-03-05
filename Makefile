@@ -64,6 +64,7 @@ FILES    = $(SRCDIR)/ft_isalpha.c \
            $(SRCDIR)/ft_streplace.c \
            $(SRCDIR)/ft_strtrim.c \
            $(SRCDIR)/ft_strsplit.c \
+           $(SRCDIR)/ft_struntil.c \
            $(SRCDIR)/ft_itoa.c \
            $(SRCDIR)/ft_charin.c \
            $(SRCDIR)/ft_indexof.c \
