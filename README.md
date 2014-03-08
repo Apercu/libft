@@ -10,9 +10,3 @@ Compile using
 
 Contact : bgronon@student.42.fr
 
-
-
-
-
-
-Xavier Niel > All
