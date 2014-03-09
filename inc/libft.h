@@ -107,11 +107,12 @@ char	**ft_strsplit(char const *s, char c);
 char	*ft_itoa(int n);
 int		ft_indexof(char *str, char c);
 int		ft_charin(char *str, char c);
-char	*ft_struntil(char *str, char *stop);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_stronly(char *str, int (*fn)(int c));
 char	*ft_multijoin(int count, ...);
 int		get_next_line(int const fd, char **line);
+char	*ft_struntil(char *str, char stop);
+char	*ft_struntil_fn(char *str, int (*fn)(int c));
 
 /*
 ** Tabs
