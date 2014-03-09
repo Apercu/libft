@@ -6,7 +6,7 @@
 #    By: bgronon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/27 20:58:26 by bgronon           #+#    #+#              #
-#    Updated: 2014/03/01 17:24:28 by bgronon          ###   ########.fr        #
+#    Updated: 2014/03/09 11:41:20 by bgronon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ FILES    = $(SRCDIR)/ft_isalpha.c \
            $(SRCDIR)/ft_streplace.c \
            $(SRCDIR)/ft_strtrim.c \
            $(SRCDIR)/ft_strsplit.c \
+           $(SRCDIR)/ft_stronly.c \
            $(SRCDIR)/ft_itoa.c \
            $(SRCDIR)/ft_charin.c \
            $(SRCDIR)/ft_indexof.c \
@@ -92,6 +93,7 @@ FILES    = $(SRCDIR)/ft_isalpha.c \
            $(SRCDIR)/ft_dlstpush.c \
            $(SRCDIR)/ft_btreenew.c \
            $(SRCDIR)/ft_btreepush.c \
+           $(SRCDIR)/ft_free_tab.c \
 
 OBJ     = $(addprefix $(OBJDIR)/, $(FILES:.c=.o))
 

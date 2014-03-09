@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 14:39:40 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/01 17:22:44 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/09 11:42:09 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,14 @@ int		ft_indexof(char *str, char c);
 int		ft_charin(char *str, char c);
 char	*ft_struntil(char *str, char *stop);
 char	*ft_strjoin(char const *s1, char const *s2);
+int		ft_stronly(char *str, int (*fn)(int c));
 char	*ft_multijoin(int count, ...);
 int		get_next_line(int const fd, char **line);
+
+/*
+** Tabs
+*/
+void	ft_free_tab(void ***arr);
 
 /*
 ** Puts
