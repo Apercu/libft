@@ -6,7 +6,7 @@
 #    By: bgronon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/27 20:58:26 by bgronon           #+#    #+#              #
-#    Updated: 2014/03/09 11:41:20 by bgronon          ###   ########.fr        #
+#    Updated: 2014/03/09 11:42:52 by bgronon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,7 @@ FILES    = $(SRCDIR)/ft_isalpha.c \
            $(SRCDIR)/ft_btreenew.c \
            $(SRCDIR)/ft_btreepush.c \
            $(SRCDIR)/ft_free_tab.c \
+           $(SRCDIR)/ft_trunc_tab.c \
 
 OBJ     = $(addprefix $(OBJDIR)/, $(FILES:.c=.o))
 
