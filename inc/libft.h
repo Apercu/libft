@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 14:39:40 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/09 11:43:12 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/09 11:44:43 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ int		get_next_line(int const fd, char **line);
 */
 void	ft_free_tab(void ***arr);
 void	ft_trunc_tab(char ***arr, int nb);
+int		ft_tab_len(char **arr);
 
 /*
 ** Puts
