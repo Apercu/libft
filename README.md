@@ -10,4 +10,3 @@ Compile using
     make
 
 Contact : bgronon@student.42.fr
-
