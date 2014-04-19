@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/17 12:22:07 by bgronon           #+#    #+#             */
-/*   Updated: 2014/02/17 12:23:47 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/04/19 11:51:05 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static t_read		*ft_newread(int fd)
 	return (red);
 }
 
-static int			ft_print(int n, t_read **tab, t_read **s, char** l)
+static int			ft_print(int n, t_read **tab, t_read **s, char **l)
 {
 	char			*tmpstr;
 	int				index;
@@ -63,7 +63,7 @@ static int			ft_print(int n, t_read **tab, t_read **s, char** l)
 	if (!tab[0])
 		return (-1);
 	index = (tab[0])->index;
-	if (n == -1 || !(tmpstr = (char *) malloc(sizeof(char) * (n + 1))))
+	if (n == -1 || !(tmpstr = (char *)malloc(sizeof(char) * (n + 1))))
 		return (-1);
 	*l = tmpstr;
 	while (n--)

@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:06:49 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/04 15:07:12 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/04/19 11:50:42 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		ft_trunc_tab(char ***arr, int nb)
 	len = ft_tab_len(*arr) - nb;
 	if (len > 0)
 	{
-		new = (char **) malloc(sizeof(char *) * (len + 1));
+		new = (char **)malloc(sizeof(char *) * (len + 1));
 		if (new)
 		{
 			i = 0;

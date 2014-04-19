@@ -6,47 +6,17 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 14:39:40 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/09 11:44:43 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/04/19 11:47:48 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+# include "struct.h"
 
 # define CHAR(a, b) 		((unsigned char *) a)[b]
 # define BUFF_SIZE			4096
-
-typedef struct		s_read
-{
-	int				size;
-	int				index;
-	int				fd;
-	char			*read;
-	struct s_read	*next;
-}					t_read;
-
-typedef struct		s_btree
-{
-	struct s_btree	*dad;
-	struct s_btree	*left;
-	struct s_btree	*right;
-	void			*content;
-}					t_btree;
-
-typedef struct		s_dlst
-{
-	void			*content;
-	struct s_dlst	*prev;
-	struct s_dlst	*next;
-}					t_dlst;
-
-typedef struct		s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
 
 /*
 ** Basics
@@ -157,4 +127,4 @@ void	ft_dlstdel(t_dlst **lst);
 t_btree	*ft_btreenew(void const *content, size_t content_size);
 void	ft_btreepush(t_btree **root, t_btree *br, int (*fn)(void *, void *));
 
-#endif /* !LIBFT_H */
+#endif

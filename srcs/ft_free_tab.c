@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/09 11:40:44 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/09 11:42:11 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/04/19 11:49:28 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void		ft_free_tab(void ***arr)
 	i = 0;
 	while ((*arr)[i])
 	{
-		ft_memdel((void **) &(*arr)[i]);
+		ft_memdel((void **)&(*arr)[i]);
 		++i;
 	}
-	ft_memdel((void **) arr);
+	ft_memdel((void **)arr);
 }
